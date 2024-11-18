@@ -1,5 +1,3 @@
-Here’s a polished and visually appealing README file for your project. It uses emojis to enhance engagement and includes styled sections.
-
 ---
 
 # 📚 Responsive E-Learning Website
@@ -110,4 +108,3 @@ Special thanks to all learners and developers who inspire us to create and share
 
 ---
 
-Let me know if you'd like any changes or additional details! 🎉

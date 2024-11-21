@@ -32,7 +32,7 @@ const Teachers = () => {
           {/* First Teacher Box */}
           <div className="box">
             <div className="tutor">
-              <img src="/public/images/pic-2.jpg" alt="John Deo" />
+              <img src="/images/pic-2.jpg" alt="John Deo" />
               <div>
                 <h3>John Deo</h3>
                 <span>Developer</span>
@@ -47,7 +47,7 @@ const Teachers = () => {
           {/* Tutor Box 2 */}
           <div className="box">
             <div className="tutor">
-              <img src="/public/images/pic-3.jpg" alt="John Deo" />
+              <img src="/images/pic-3.jpg" alt="John Deo" />
               <div>
                 <h3>John Deo</h3>
                 <span>Developer</span>
@@ -62,7 +62,7 @@ const Teachers = () => {
           {/* Tutor Box 3 */}
           <div className="box">
             <div className="tutor">
-              <img src="/public/images/pic-4.jpg" alt="John Deo" />
+              <img src="/images/pic-4.jpg" alt="John Deo" />
               <div>
                 <h3>John Deo</h3>
                 <span>Developer</span>
@@ -77,7 +77,7 @@ const Teachers = () => {
           {/* Tutor Box 4 */}
           <div className="box">
             <div className="tutor">
-              <img src="/public/images/pic-5.jpg" alt="John Deo" />
+              <img src="/images/pic-5.jpg" alt="John Deo" />
               <div>
                 <h3>John Deo</h3>
                 <span>Developer</span>
@@ -92,7 +92,7 @@ const Teachers = () => {
           {/* Tutor Box 5 */}
           <div className="box">
             <div className="tutor">
-              <img src="/public/images/pic-6.jpg" alt="John Deo" />
+              <img src="/images/pic-6.jpg" alt="John Deo" />
               <div>
                 <h3>John Deo</h3>
                 <span>Developer</span>
@@ -107,7 +107,7 @@ const Teachers = () => {
           {/* Tutor Box 6 */}
           <div className="box">
             <div className="tutor">
-              <img src="/public/images/pic-7.jpg" alt="John Deo" />
+              <img src="/images/pic-7.jpg" alt="John Deo" />
               <div>
                 <h3>John Deo</h3>
                 <span>Developer</span>
@@ -122,7 +122,7 @@ const Teachers = () => {
           {/* Tutor Box 7 */}
           <div className="box">
             <div className="tutor">
-              <img src="/public/images/pic-8.jpg" alt="John Deo" />
+              <img src="/images/pic-8.jpg" alt="John Deo" />
               <div>
                 <h3>John Deo</h3>
                 <span>Developer</span>

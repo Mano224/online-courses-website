@@ -17,13 +17,13 @@ const Playlist = () => {
             </form>
 
             <div className="thumb">
-              <img src="/public/images/thumb-1.png" alt="playlist thumbnail" />
+              <img src="/images/thumb-1.png" alt="playlist thumbnail" />
               <span>10 videos</span>
             </div>
           </div>
           <div className="column">
             <div className="tutor">
-              <img src="/public/images/pic-1.jpg" alt="tutor" />
+              <img src="/images/pic-1.jpg" alt="tutor" />
               <div>
                 <h3>john deo</h3>
                 <span>21-10-2022</span>
@@ -45,37 +45,37 @@ const Playlist = () => {
         <div className="box-container">
           <Link className="box" to="/watch-video">
             <i className="fas fa-play"></i>
-            <img src='/public/images/post-1-1.png' alt="video thumbnail" />
+            <img src='/images/post-1-1.png' alt="video thumbnail" />
             <h3>complete HTML tutorial (part 01)</h3>
           </Link>
 
           <Link className="box" to="/watch-video">
             <i className="fas fa-play"></i>
-            <img src='/public/images/post-1-2.png' alt="video thumbnail" />
+            <img src='/images/post-1-2.png' alt="video thumbnail" />
             <h3>complete HTML tutorial (part 02)</h3>
           </Link>
 
           <Link className="box" to="/watch-video">
             <i className="fas fa-play"></i>
-            <img src='/public/images/post-1-3.png' alt="video thumbnail" />
+            <img src='/images/post-1-3.png' alt="video thumbnail" />
             <h3>complete HTML tutorial (part 03)</h3>
           </Link>
 
           <Link className="box" to="/watch-video">
             <i className="fas fa-play"></i>
-            <img src='/public/images/post-1-4.png' alt="video thumbnail" />
+            <img src='/images/post-1-4.png' alt="video thumbnail" />
             <h3>complete HTML tutorial (part 04)</h3>
           </Link>
 
           <Link className="box" to="/watch-video">
             <i className="fas fa-play"></i>
-            <img src='/public/images/post-1-5.png' alt="video thumbnail" />
+            <img src='/images/post-1-5.png' alt="video thumbnail" />
             <h3>complete HTML tutorial (part 05)</h3>
           </Link>
 
           <Link className="box" to="/watch-video">
             <i className="fas fa-play"></i>
-            <img src='/public/images/post-1-6.png' alt="video thumbnail" />
+            <img src='/images/post-1-6.png' alt="video thumbnail" />
             <h3>complete HTML tutorial (part 06)</h3>
           </Link>
         </div>

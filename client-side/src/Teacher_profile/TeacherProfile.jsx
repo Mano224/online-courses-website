@@ -12,7 +12,7 @@ const TeacherProfile = () => {
 
         <div className="details">
           <div className="tutor">
-            <img src="/public/images/pic-2.jpg" alt="tutor" />
+            <img src="images/pic-2.jpg" alt="tutor" />
             <h3>john deo</h3>
             <span>developer</span>
           </div>
@@ -31,7 +31,7 @@ const TeacherProfile = () => {
         <div className="box-container">
           <div className="box">
             <div className="thumb">
-              <img src="/public/images/thumb-1.png" alt="course thumbnail" />
+              <img src="images/thumb-1.png" alt="course thumbnail" />
               <span>10 videos</span>
             </div>
             <h3 className="title">complete HTML tutorial</h3>
@@ -40,7 +40,7 @@ const TeacherProfile = () => {
 
           <div className="box">
             <div className="thumb">
-              <img src="/public/images/thumb-2.png" alt="course thumbnail" />
+              <img src="images/thumb-2.png" alt="course thumbnail" />
               <span>10 videos</span>
             </div>
             <h3 className="title">complete CSS tutorial</h3>
@@ -49,7 +49,7 @@ const TeacherProfile = () => {
 
           <div className="box">
             <div className="thumb">
-              <img src="/public/images/thumb-3.png" alt="course thumbnail" />
+              <img src="images/thumb-3.png" alt="course thumbnail" />
               <span>10 videos</span>
             </div>
             <h3 className="title">complete javascript tutorial</h3>
@@ -58,10 +58,10 @@ const TeacherProfile = () => {
 
           <div className="box">
             <div className="thumb">
-              <img src="/public/images/thumb-4.png" alt="course thumbnail" />
+              <img src="images/thumb-4.png" alt="course thumbnail" />
               <span>10 videos</span>
             </div>
-            <h3 className="title">complete Boostrap tutorial</h3>
+            <h3 className="title">complete Bootstrap tutorial</h3>
             <Link to="/playlist" className="inline-btn">view playlist</Link>
           </div>
         </div>

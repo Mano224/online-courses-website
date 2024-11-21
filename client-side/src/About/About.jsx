@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
+import Footer from '../Footer/Footer';
 
 const About = () => {
   return (
@@ -55,7 +56,7 @@ const About = () => {
           <div className="box">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
             <div className="student">
-              <img src="/public/images/pic-2.jpg" alt="student" />
+              <img src="/images/pic-2.jpg" alt="student" />
               <div>
                 <h3>john deo</h3>
                 <div className="stars">
@@ -71,7 +72,7 @@ const About = () => {
           <div className="box">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
             <div className="student">
-              <img src="/public/images/pic-2.jpg" alt="student" />
+              <img src="/images/pic-2.jpg" alt="student" />
               <div>
                 <h3>john deo</h3>
                 <div className="stars">
@@ -86,7 +87,7 @@ const About = () => {
           </div><div className="box">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
             <div className="student">
-              <img src="/public/images/pic-2.jpg" alt="student" />
+              <img src="/images/pic-2.jpg" alt="student" />
               <div>
                 <h3>john deo</h3>
                 <div className="stars">
@@ -101,7 +102,7 @@ const About = () => {
           </div><div className="box">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
             <div className="student">
-              <img src="/public/images/pic-2.jpg" alt="student" />
+              <img src="/images/pic-2.jpg" alt="student" />
               <div>
                 <h3>john deo</h3>
                 <div className="stars">
@@ -116,7 +117,7 @@ const About = () => {
           </div><div className="box">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
             <div className="student">
-              <img src="/public/images/pic-2.jpg" alt="student" />
+              <img src="/images/pic-2.jpg" alt="student" />
               <div>
                 <h3>john deo</h3>
                 <div className="stars">
@@ -131,7 +132,7 @@ const About = () => {
           </div><div className="box">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
             <div className="student">
-              <img src="/public/images/pic-2.jpg" alt="student" />
+              <img src="/images/pic-2.jpg" alt="student" />
               <div>
                 <h3>john deo</h3>
                 <div className="stars">
@@ -147,9 +148,7 @@ const About = () => {
         </div>
       </section>
 
-      <footer className="footer">
-        &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!
-      </footer>
+      <Footer />
     </>
   );
 };

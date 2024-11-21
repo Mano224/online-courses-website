@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import HeaderAndSideBar from "../HeaderAndSideBar/HeaderAndSideBar";
 import Footer from "../Footer/Footer";
+import { Link } from "react-router-dom";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -40,7 +41,7 @@ const Courses = () => {
               <span>{course.videoCount} videos</span>
             </div>
             <h3 className="title">{course.title}</h3>
-            <a href={course.link} className="inline-btn">View Playlist</a>
+            <Link href={course.link} className="inline-btn">View Playlist</Link>
           </div>
         ))}
       </div>

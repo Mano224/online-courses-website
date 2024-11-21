@@ -41,7 +41,7 @@ const Courses = () => {
               <span>{course.videoCount} videos</span>
             </div>
             <h3 className="title">{course.title}</h3>
-            <Link href={course.link} className="inline-btn">View Playlist</Link>
+            <Link to={course.link} className="inline-btn">View Playlist</Link>
           </div>
         ))}
       </div>

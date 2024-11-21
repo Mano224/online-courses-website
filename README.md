@@ -57,7 +57,7 @@ This project will guide you step-by-step to create an e-learning website with mu
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/elearning-website.git
+git clone https://github.com/your-username/online-courses-website.git
 ```
 
 ### 2️⃣ Install Dependencies

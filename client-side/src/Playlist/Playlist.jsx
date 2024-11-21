@@ -1,83 +1,84 @@
-import { Link } from 'react-router-dom';
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
-import Footer from '../Footer/Footer';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import HeaderAndSideBar from "../HeaderAndSideBar/HeaderAndSideBar";
+import Footer from "../Footer/Footer";
 
 const Playlist = () => {
+  const [playlistDetails, setPlaylistDetails] = useState(null);
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchPlaylistData = async () => {
+      try {
+        const response = await axios.get("/Playlists.json"); 
+        setPlaylistDetails(response.data.playlistDetails);
+        setVideos(response.data.videos);
+      } catch (error) {
+        console.error("Error fetching playlist data:", error);
+      }
+    };
+    fetchPlaylistData();
+  }, []);
+
+  if (!playlistDetails || videos.length === 0) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
       <HeaderAndSideBar />
 
+      {/* Playlist Details Section */}
       <section className="playlist-details">
-        <h1 className="heading">playlist details</h1>
-
+        <h1 className="heading">Playlist Details</h1>
         <div className="row">
           <div className="column">
             <form action="" method="post" className="save-playlist">
-              <button type="submit"><i className="far fa-bookmark"></i> <span>save playlist</span></button>
+              <button type="submit">
+                <i className="far fa-bookmark"></i> <span>Save Playlist</span>
+              </button>
             </form>
 
             <div className="thumb">
-              <img src="/images/thumb-1.png" alt="playlist thumbnail" />
-              <span>10 videos</span>
+              <img src={playlistDetails.thumbnail} alt="Playlist Thumbnail" />
+              <span>{playlistDetails.videosCount} videos</span>
             </div>
           </div>
           <div className="column">
             <div className="tutor">
-              <img src="/images/pic-1.jpg" alt="tutor" />
+              <img
+                src={playlistDetails.tutor.profileImage}
+                alt={playlistDetails.tutor.name}
+              />
               <div>
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
+                <h3>{playlistDetails.tutor.name}</h3>
+                <span>{playlistDetails.tutor.date}</span>
               </div>
             </div>
 
             <div className="details">
-              <h3>complete HTML tutorial</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum minus reiciendis, error sunt veritatis exercitationem deserunt velit doloribus itaque voluptate.</p>
-              <Link to="/teacher-profile" className="inline-btn">view profile</Link>
+              <h3>{playlistDetails.title}</h3>
+              <p>{playlistDetails.description}</p>
+              <Link to="/teacher-profile" className="inline-btn">
+                View Profile
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Playlist Videos Section */}
       <section className="playlist-videos">
-        <h1 className="heading">playlist videos</h1>
-
+        <h1 className="heading">Playlist Videos</h1>
         <div className="box-container">
-          <Link className="box" to="/watch-video">
-            <i className="fas fa-play"></i>
-            <img src='/images/post-1-1.png' alt="video thumbnail" />
-            <h3>complete HTML tutorial (part 01)</h3>
-          </Link>
-
-          <Link className="box" to="/watch-video">
-            <i className="fas fa-play"></i>
-            <img src='/images/post-1-2.png' alt="video thumbnail" />
-            <h3>complete HTML tutorial (part 02)</h3>
-          </Link>
-
-          <Link className="box" to="/watch-video">
-            <i className="fas fa-play"></i>
-            <img src='/images/post-1-3.png' alt="video thumbnail" />
-            <h3>complete HTML tutorial (part 03)</h3>
-          </Link>
-
-          <Link className="box" to="/watch-video">
-            <i className="fas fa-play"></i>
-            <img src='/images/post-1-4.png' alt="video thumbnail" />
-            <h3>complete HTML tutorial (part 04)</h3>
-          </Link>
-
-          <Link className="box" to="/watch-video">
-            <i className="fas fa-play"></i>
-            <img src='/images/post-1-5.png' alt="video thumbnail" />
-            <h3>complete HTML tutorial (part 05)</h3>
-          </Link>
-
-          <Link className="box" to="/watch-video">
-            <i className="fas fa-play"></i>
-            <img src='/images/post-1-6.png' alt="video thumbnail" />
-            <h3>complete HTML tutorial (part 06)</h3>
-          </Link>
+          {videos.map((video) => (
+            <Link className="box" to="/watch-video" key={video.id}>
+              <i className="fas fa-play"></i>
+              <img src={video.src} alt={video.title} />
+              <h3>{video.title}</h3>
+            </Link>
+          ))}
         </div>
       </section>
 

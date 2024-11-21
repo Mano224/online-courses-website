@@ -1,150 +1,43 @@
-import { Link } from 'react-router-dom';
 import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 import Footer from '../Footer/Footer';
+import reviewsData from '/public/reviews.json'; // Import the JSON data
 
 const About = () => {
   return (
     <>
       <HeaderAndSideBar />
       <section className="about">
-        <div className="row">
-          <div className="image">
-            <img src='/images/about-img.svg' alt="about us" />
-          </div>
-          <div className="content">
-            <h3>why choose us?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut dolorum quasi illo? Distinctio expedita commodi, nemo a quam error repellendus sint, fugiat quis numquam eum eveniet sequi aspernatur quaerat tenetur.</p>
-            <Link to="/courses" className="inline-btn">our courses</Link>
-          </div>
-        </div>
-
-        <div className="box-container">
-          <div className="box">
-            <i className="fas fa-graduation-cap"></i>
-            <div>
-              <h3>+10k</h3>
-              <p>online courses</p>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-user-graduate"></i>
-            <div>
-              <h3>+40k</h3>
-              <p>brilliant students</p>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-chalkboard-user"></i>
-            <div>
-              <h3>+2k</h3>
-              <p>expert tutors</p>
-            </div>
-          </div>
-          <div className="box">
-            <i className="fas fa-briefcase"></i>
-            <div>
-              <h3>100%</h3>
-              <p>job placement</p>
-            </div>
-          </div>
-        </div>
+        {/* About section content */}
       </section>
 
       <section className="reviews">
-        <h1 className="heading"> student's reviews</h1>
+        <h1 className="heading">Student's Reviews</h1>
         <div className="box-container">
-          <div className="box">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
-            <div className="student">
-              <img src="/images/pic-2.jpg" alt="student" />
-              <div>
-                <h3>john deo</h3>
-                <div className="stars">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star-half-alt"></i>
+          {reviewsData.reviews.map((review, index) => (
+            <div className="box" key={index}>
+              <p>{review.text}</p>
+              <div className="student">
+                <img src={review.student.image} alt="student" />
+                <div>
+                  <h3>{review.student.name}</h3>
+                  <div className="stars">
+                    {[...Array(5)].map((_, starIndex) => (
+                      <i
+                        key={starIndex}
+                        className={
+                          starIndex < Math.floor(review.student.rating)
+                            ? "fas fa-star"
+                            : starIndex < review.student.rating
+                            ? "fas fa-star-half-alt"
+                            : "fas fa-star-empty"
+                        }
+                      ></i>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="box">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
-            <div className="student">
-              <img src="/images/pic-2.jpg" alt="student" />
-              <div>
-                <h3>john deo</h3>
-                <div className="stars">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star-half-alt"></i>
-                </div>
-              </div>
-            </div>
-          </div><div className="box">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
-            <div className="student">
-              <img src="/images/pic-2.jpg" alt="student" />
-              <div>
-                <h3>john deo</h3>
-                <div className="stars">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star-half-alt"></i>
-                </div>
-              </div>
-            </div>
-          </div><div className="box">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
-            <div className="student">
-              <img src="/images/pic-2.jpg" alt="student" />
-              <div>
-                <h3>john deo</h3>
-                <div className="stars">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star-half-alt"></i>
-                </div>
-              </div>
-            </div>
-          </div><div className="box">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
-            <div className="student">
-              <img src="/images/pic-2.jpg" alt="student" />
-              <div>
-                <h3>john deo</h3>
-                <div className="stars">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star-half-alt"></i>
-                </div>
-              </div>
-            </div>
-          </div><div className="box">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, suscipit a. Quibusdam, dignissimos consectetur. Sed ullam iusto eveniet qui aut quibusdam vero voluptate libero facilis fuga. Eligendi eaque molestiae modi?</p>
-            <div className="student">
-              <img src="/images/pic-2.jpg" alt="student" />
-              <div>
-                <h3>john deo</h3>
-                <div className="stars">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star-half-alt"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

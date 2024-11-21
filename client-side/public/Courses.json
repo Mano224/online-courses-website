@@ -1,0 +1,94 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-2.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-1.png",
+      "videoCount": 10,
+      "title": "Complete HTML Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 2,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-3.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-2.png",
+      "videoCount": 10,
+      "title": "Complete CSS Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 3,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-4.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-3.png",
+      "videoCount": 10,
+      "title": "Complete JS Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 4,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-5.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-4.png",
+      "videoCount": 10,
+      "title": "Complete Bootstrap Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 5,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-6.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-5.png",
+      "videoCount": 10,
+      "title": "Complete JQuery Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 6,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-7.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-6.png",
+      "videoCount": 10,
+      "title": "Complete SASS Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 7,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-8.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-7.png",
+      "videoCount": 10,
+      "title": "Complete PHP Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 8,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-9.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-8.png",
+      "videoCount": 10,
+      "title": "Complete MySQL Tutorial",
+      "link": "/playlist"
+    },
+    {
+      "id": 9,
+      "tutorName": "John Deo",
+      "tutorImage": "images/pic-1.jpg",
+      "date": "21-10-2022",
+      "thumbnail": "images/thumb-9.png",
+      "videoCount": 10,
+      "title": "Complete React Tutorial",
+      "link": "/playlist"
+    }
+  ]
+}

@@ -1,161 +1,52 @@
-import { Link } from 'react-router-dom';
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
-import Footer from '../Footer/Footer';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import HeaderAndSideBar from "../HeaderAndSideBar/HeaderAndSideBar";
+import Footer from "../Footer/Footer";
 
 const Courses = () => {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get('/Courses.json'); 
+        setCourses(response.data.courses);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
   return (
-    <>
+    <div>
       <HeaderAndSideBar />
-      <section className="courses">
-        <h1 className="heading">our courses</h1>
-        <div className="box-container">
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-2.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-1.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete HTML tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
+    <section className="courses">
+      <h1 className="heading">Our Courses</h1>
 
-          <div className="box">
+      <div className="box-container">
+        {courses.map((course) => (
+          <div className="box" key={course.id}>
             <div className="tutor">
-              <img src="/images/pic-3.jpg" alt="tutor" />
+              <img src={course.tutorImage} alt={course.tutorName} />
               <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
+                <h3>{course.tutorName}</h3>
+                <span>{course.date}</span>
               </div>
             </div>
             <div className="thumb">
-              <img src="/images/thumb-2.png" alt="course thumbnail" />
-              <span>10 videos</span>
+              <img src={course.thumbnail} alt={course.title} />
+              <span>{course.videoCount} videos</span>
             </div>
-            <h3 className="title">complete CSS tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
+            <h3 className="title">{course.title}</h3>
+            <a href={course.link} className="inline-btn">View Playlist</a>
           </div>
-
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-4.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-3.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete JS tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-5.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-4.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete Bootstrap tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-6.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-5.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete JQuery tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-7.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-6.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete SASS tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-8.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-7.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete PHP tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-9.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-8.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete MySQL tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
-
-          <div className="box">
-            <div className="tutor">
-              <img src="/images/pic-1.jpg" alt="tutor" />
-              <div className="info">
-                <h3>john deo</h3>
-                <span>21-10-2022</span>
-              </div>
-            </div>
-            <div className="thumb">
-              <img src="/images/thumb-9.png" alt="course thumbnail" />
-              <span>10 videos</span>
-            </div>
-            <h3 className="title">complete react tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </>
+        ))}
+      </div>
+    </section>
+    <Footer />
+    </div>
   );
 };
 

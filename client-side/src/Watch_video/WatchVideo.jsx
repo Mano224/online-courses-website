@@ -1,8 +1,46 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 import Footer from '../Footer/Footer';
 
 const WatchVideo = () => {
+  const [commentsData, setCommentsData] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); 
+
+  useEffect(() => {
+    fetch('/comments.json') // Adjust the path as necessary
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch comments data');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Ensure the fetched data is an array
+        if (Array.isArray(data)) {
+          setCommentsData(data);
+        } else {
+          setError('Fetched data is not an array');
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);  // Empty dependency array to run only once when the component mounts
+
+  // If the data is still loading, show a loading message
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // If there was an error, show the error message
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <>
       <HeaderAndSideBar />
@@ -10,15 +48,15 @@ const WatchVideo = () => {
       <section className="watch-video">
         <div className="video-container">
           <div className="video">
-            <video src="/public/images/vid-1.mp4" controls poster="/public/images/post-1-1.png" id="video"></video>
+            <video src="/images/vid-1.mp4" controls poster="/images/post-1-1.png" id="video"></video>
           </div>
-          <h3 className="title">complete HTML tutorial (part 01)</h3>
+          <h3 className="title">Complete HTML tutorial (part 01)</h3>
           <div className="info">
             <p className="date"><i className="fas fa-calendar"></i><span>22-10-2022</span></p>
             <p className="date"><i className="fas fa-heart"></i><span>44 likes</span></p>
           </div>
           <div className="tutor">
-            <img src="/public/images/pic-2.jpg" alt="tutor" />
+            <img src="/images/pic-2.jpg" alt="tutor" />
             <div>
               <h3>john deo</h3>
               <span>developer</span>
@@ -44,78 +82,39 @@ const WatchVideo = () => {
           <input type="submit" value="add comment" className="inline-btn" name="add_comment" />
         </form>
 
-        <h1 className="heading">user comments</h1>
+        <h1 className="heading">User comments</h1>
 
         <div className="box-container">
-          <div className="box">
-            <div className="user">
-              <img src="/public/images/pic-1.jpg" alt="user" />
-              <div>
-                <h3>shaikh anas</h3>
-                <span>22-10-2022</span>
+          {/* Only map if commentsData is an array */}
+          {Array.isArray(commentsData) && commentsData.length > 0 ? (
+            commentsData.map((comment, index) => (
+              <div key={index} className="box">
+                <div className="user">
+                  <img src={comment.user.profileImage} alt="user" />
+                  <div>
+                    <h3>{comment.user.name}</h3>
+                    <span>{comment.user.date}</span>
+                  </div>
+                </div>
+                <div className="comment-box">{comment.comment}</div>
+                {comment.actions && (
+  <form action="" className="flex-btn">
+    {comment.actions.map((action, index) => (
+      <input
+        key={index}
+        type="submit"
+        value={action.label}
+        name={action.action + "_comment"}
+        className={`inline-${action.action}-btn`} // This generates the class dynamically
+      />
+    ))}
+                  </form>
+                )}
               </div>
-            </div>
-            <div className="comment-box">this is a comment form shaikh anas</div>
-            <form action="" className="flex-btn">
-              <input type="submit" value="edit comment" name="edit_comment" className="inline-option-btn" />
-              <input type="submit" value="delete comment" name="delete_comment" className="inline-delete-btn" />
-            </form>
-          </div>
-
-          <div className="box">
-            <div className="user">
-              <img src="/public/images/pic-2.jpg" alt="user" />
-              <div>
-                <h3>john deo</h3>
-                <span>22-10-2022</span>
-              </div>
-            </div>
-            <div className="comment-box">awesome tutorial! keep going!</div>
-          </div>
-
-          <div className="box">
-            <div className="user">
-              <img src="/public/images/pic-3.jpg" alt="user" />
-              <div>
-                <h3>john deo</h3>
-                <span>22-10-2022</span>
-              </div>
-            </div>
-            <div className="comment-box">amazing way of teaching! thank you so much!</div>
-          </div>
-
-          <div className="box">
-            <div className="user">
-              <img src="/public/images/pic-4.jpg" alt="user" />
-              <div>
-                <h3>john deo</h3>
-                <span>22-10-2022</span>
-              </div>
-            </div>
-            <div className="comment-box">loved it, thanks for the tutorial!</div>
-          </div>
-
-          <div className="box">
-            <div className="user">
-              <img src="/public/images/pic-5.jpg" alt="user" />
-              <div>
-                <h3>john deo</h3>
-                <span>22-10-2022</span>
-              </div>
-            </div>
-            <div className="comment-box">this is what I have been looking for! thank you so much!</div>
-          </div>
-
-          <div className="box">
-            <div className="user">
-              <img src="/public/images/pic-2.jpg" alt="user" />
-              <div>
-                <h3>john deo</h3>
-                <span>22-10-2022</span>
-              </div>
-            </div>
-            <div className="comment-box">thanks for the tutorial! how to download source code file?</div>
-          </div>
+            ))
+          ) : (
+            <p>No comments available</p>
+          )}
         </div>
       </section>
 

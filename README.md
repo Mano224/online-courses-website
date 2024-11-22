@@ -2,7 +2,7 @@
 
 # 📚 Responsive E-Learning Website
 
-🎉 **Welcome to the ultimate guide to creating a complete responsive multi-page online education website!** This project is perfect for beginners who want to learn how to build a modern e-learning platform like **YouTube** with **React**, **HTML**, **CSS**, and **Vanilla JavaScript**. 🚀
+🎉 **Welcome to the ultimate guide to creating a complete responsive multi-page online education website!** This project is perfect for beginners who want to learn how to build a modern e-learning platform like **YouTube** with **React**, **HTML**, **CSS**. 🚀
 
 ---
 

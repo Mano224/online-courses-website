@@ -10,9 +10,6 @@
 
 This project will guide you step-by-step to create an e-learning website with multiple responsive features, including a **video player**, **playlists**, and **user profiles**. Perfect for educators, students, or anyone looking to dive into web development.
 
-**🎥 Full Playlist**:  
-[Online Education Website](#)
-
 ---
 
 ## 🛠️ **Features**
@@ -33,14 +30,7 @@ This project will guide you step-by-step to create an e-learning website with mu
 ✔ **Tutor Profiles**: Showcase your expertise.  
 ✔ **Forms**: Responsive login, register, and update forms.  
 
----
 
-## 📸 **Screenshots**
-
-✨ *[Add screenshots here]*  
-1️⃣ Navbar with Search Box  
-2️⃣ Playlist View  
-3️⃣ Video Player with Comments  
 
 ---
 
@@ -48,8 +38,7 @@ This project will guide you step-by-step to create an e-learning website with mu
 
 - 🟦 React  
 - 🌐 HTML  
-- 🎨 CSS (Grid)  
-- ✨ Vanilla JavaScript  
+- 🎨 CSS (Grid)
 
 ---
 
@@ -72,21 +61,6 @@ npm start
 
 ### 4️⃣ View the Website  
 Navigate to: [http://localhost:3000](http://localhost:3000)
-
----
-
-## ✨ **How to Customize**
-
-- 🎨 Modify `theme.js` for custom themes.  
-- 🔍 Edit `sidebar.css` and `navbar.css` for navigation styles.  
-- 🎥 Use `video-player.js` for playlist functionality.  
-
----
-
-## 🌟 **Want to Learn More?**
-
-Check out the full **YouTube Playlist** for this project:  
-📺 [Online Education Website](#)
 
 ---
 

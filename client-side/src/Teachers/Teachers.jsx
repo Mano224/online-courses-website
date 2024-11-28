@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import HeaderAndSideBar from "../HeaderAndSideBar/HeaderAndSideBar";
 import Footer from "../Footer/Footer";
 import { useState, useEffect } from "react";
 
@@ -23,7 +22,6 @@ const Teachers = () => {
 
   return (
     <>
-      <HeaderAndSideBar />
 
       <section className="teachers">
         <h1 className="heading">Expert Teachers</h1>

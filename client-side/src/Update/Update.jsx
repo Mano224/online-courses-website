@@ -1,10 +1,6 @@
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
-
 const Update = () => {
   return (
     <>
-      <HeaderAndSideBar />
-
       <section className="form-container">
         <form action="" method="post" encType="multipart/form-data">
           <h3>update profile</h3>

@@ -1,9 +1,6 @@
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
-
 const Contact = () => {
   return (
     <>
-      <HeaderAndSideBar />
       <section className="contact">
         <div className="row">
           <div className="image">

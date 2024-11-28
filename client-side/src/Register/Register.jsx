@@ -1,10 +1,8 @@
 import Footer from '../Footer/Footer';
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 
 const Register = () => {
   return (
     <>
-      <HeaderAndSideBar />
 
       <section className="form-container">
         <form action="" method="post" encType="multipart/form-data">

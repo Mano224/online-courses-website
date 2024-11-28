@@ -9,7 +9,7 @@ const Playlist = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/playlists.json')
+    axios.get('')
       .then(response => {
         const playlists = response.data.playlists;
         const selectedPlaylist = playlists.find(pl => pl.id === parseInt(id));

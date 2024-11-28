@@ -10,7 +10,7 @@ export default function Courses() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/courses.json')
+    axios.get('')
       .then(response => {
         const data = response.data;
         if (data.tracks) {

@@ -9,7 +9,7 @@ const Teachers = () => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const response = await axios.get("./Teachers.json");
+        const response = await axios.get("");
         console.log("Fetched data:", response.data);
         setTeachers(response.data || []);
       } catch (error) {

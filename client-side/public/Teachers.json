@@ -12,7 +12,7 @@
   {
       "id": 2,
       "name": "Jane Smith",
-      "role": "Designer",
+      "role": "Developer",
       "playlists": 6,
       "videos": 22,
       "likes": 1345,

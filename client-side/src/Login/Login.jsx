@@ -1,8 +1,6 @@
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 const Login = () => {
   return (
     <>
-    <HeaderAndSideBar />
       <section className="form-container">
         <form action="" method="post" encType="multipart/form-data">
           <h3>login now</h3>

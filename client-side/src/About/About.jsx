@@ -1,11 +1,9 @@
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 import Footer from '../Footer/Footer';
 import reviewsData from '/public/reviews.json'; // Import the JSON data
 
 const About = () => {
   return (
     <>
-      <HeaderAndSideBar />
       <section className="about">
   <div className="row">
     <div className="image">

@@ -88,7 +88,7 @@ def update_profile(id):
             if user.check_password(old_password):
                 return jsonify({'error': 'Old password is incorrect'}), 400
             if new_password != confirm_password:
-                return jsonify({'error': 'New password and confirm password do not match'}), 400
+                return jsonify({"error": "New password and confirm password do not match"}), 400
             user.set_password(old_password)
 
 
@@ -115,9 +115,9 @@ def courses():
 
 @app.route('/courses/<int:playlist_id>', methods=["GET"])
 def videos(playlist_id):
-    plaulist = Playlist.query.get(playlist_id)
+    playlist = Playlist.query.get(playlist_id)
 
-    if not plaulist:
+    if not playlist:
         return jsonify({"message" : " No playlist found"})
     
     videos = Video.query.filter_by(playlist_id=playlist_id).all()

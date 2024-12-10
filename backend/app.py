@@ -3,9 +3,90 @@ from config import create_app, db
 from models import Users, Playlist, Video, init_db
 from werkzeug.utils import secure_filename
 import os
+from flask_cors import CORS  # Import CORS
+from flask_migrate import Migrate
 
+# Initialize app and enable CORS
 app = create_app()
+CORS(app)  # Enable CORS for all routes
 
+# Initialize Flask-Migrate
+migrate = Migrate(app, db)
+
+# Create a new teacher
+@app.route('/teachers', methods=["POST"])
+def create_teacher():
+    data = request.get_json()
+    name = data.get("name")
+    email = data.get("email")
+    bio = data.get("bio")
+    subject = data.get("subject")
+    img_url = request.files['img_url'] if 'img_url' in request.files else None
+
+    if not name or not email:
+        return jsonify({'error': 'Name and email are required'}), 400
+    
+    if Teacher.query.filter_by(email=email).first():
+        return jsonify({'error': 'Email already exists'}), 409
+
+    if img_url:
+        filename = secure_filename(img_url.filename)
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], f"teacher_{email}_{filename}")
+        img_url.save(file_path)
+
+    teacher = Teacher(name=name, email=email, bio=bio, subject=subject, img_url=file_path if img_url else None)
+    db.session.add(teacher)
+    db.session.commit()
+
+    return jsonify({'message': 'Teacher created successfully'}), 201
+
+# Get all teachers
+@app.route('/teachers', methods=["GET"])
+def get_teachers():
+    teachers = Teacher.query.all()
+    return jsonify([teacher.to_json() for teacher in teachers])
+
+# Get teacher by ID
+@app.route('/teachers/<int:id>', methods=["GET"])
+def get_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({"message": "Teacher not found"}), 404
+    return jsonify(teacher.to_json())
+
+# Update teacher
+@app.route('/teachers/<int:id>', methods=["PATCH"])
+def update_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({'error': 'Teacher not found'}), 404
+
+    data = request.json
+    teacher.name = data.get("name", teacher.name)
+    teacher.email = data.get("email", teacher.email)
+    teacher.bio = data.get("bio", teacher.bio)
+    teacher.subject = data.get("subject", teacher.subject)
+
+    if 'img_url' in request.files:
+        img_url = request.files['img_url']
+        filename = secure_filename(img_url.filename)
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], f"teacher_{id}_{filename}")
+        img_url.save(file_path)
+        teacher.img_url = file_path
+
+    db.session.commit()
+    return jsonify({"message": "Teacher updated successfully"}), 200
+
+# Delete teacher
+@app.route('/teachers/<int:id>', methods=["DELETE"])
+def delete_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({'error': 'Teacher not found'}), 404
+    
+    db.session.delete(teacher)
+    db.session.commit()
+    return jsonify({"message": "Teacher deleted successfully"}), 200
 
 # get-user
 @app.route('/profile', methods=["GET"])
@@ -15,7 +96,7 @@ def get_user():
     return jsonify(result)
 
 # register
-@app.route('/register',methods=["POST"])
+@app.route('/register', methods=["POST"])
 def register():
     data = request.get_json()
     username = data.get("name")
@@ -34,9 +115,10 @@ def register():
         return jsonify({'error': 'Username or email already exists'}), 409
     
     if img_url:
-        filename = secure_filename(img_url.filename)  
+        filename = secure_filename(img_url.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], f"{username}_{filename}")
         img_url.save(file_path)
+    
     # Create and save the new user
     user = Users(username=username, email=email, img_url=img_url)
     user.set_password(password)
@@ -47,7 +129,7 @@ def register():
 
 
 # login
-@app.route('/login',methods=["POST"])
+@app.route('/login', methods=["POST"])
 def login():
     data = request.get_json()
     email = data.get('email')
@@ -58,9 +140,9 @@ def login():
     
     user = Users.query.filter_by(email=email).first()
     if not user:
-        return jsonify({"message": "user Not exsit"})
+        return jsonify({"message": "User not found"}), 404
 
-    # check auth
+    # Check authentication
     if user and user.check_password(password):
         # Authentication successful
         return jsonify({'message': f'Welcome, {user.username}!'}), 200
@@ -85,57 +167,50 @@ def update_profile(id):
         confirm_password = data.get("confirm_password")
 
         if old_password:
-            if user.check_password(old_password):
+            if not user.check_password(old_password):
                 return jsonify({'error': 'Old password is incorrect'}), 400
             if new_password != confirm_password:
                 return jsonify({'error': 'New password and confirm password do not match'}), 400
-            user.set_password(old_password)
-
+            user.set_password(new_password)
 
         if 'img_url' in request.files:
             img_url = request.files['img_url']
-        if img_url:
             filename = secure_filename(img_url.filename) 
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], f"user_{id}_{filename}")
             img_url.save(file_path)
             user.img_url = file_path
 
+        db.session.commit()
+        return jsonify({"message": "Profile updated successfully"}), 200
 
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
-    
+
+
 @app.route('/courses', methods=["GET"])
 def courses():
-    Playlists = Playlist.query.all()
+    playlists = Playlist.query.all()
     return jsonify([{
-        "id" : p.id,
+        "id": p.id,
         "title": p.title,
-    } for p in Playlists])
+    } for p in playlists])
 
 @app.route('/courses/<int:playlist_id>', methods=["GET"])
 def videos(playlist_id):
-    plaulist = Playlist.query.get(playlist_id)
+    playlist = Playlist.query.get(playlist_id)
 
-    if not plaulist:
-        return jsonify({"message" : " No playlist found"})
+    if not playlist:
+        return jsonify({"message": "No playlist found"}), 404
     
     videos = Video.query.filter_by(playlist_id=playlist_id).all()
     return jsonify([{
-        "id" : v.id,
-        "title" : v.title,
-        "description" : v.description,
-        "thumbnail" : v.thumbnail,
+        "id": v.id,
+        "title": v.title,
+        "description": v.description,
+        "thumbnail": v.thumbnail,
         "video_url": v.video_url
     } for v in videos])
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

@@ -22,6 +22,23 @@ class Users(db.Model):
             "imgUrl":self.img_url,
 
         }
+class Teacher(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    bio = db.Column(db.String(500), nullable=True)
+    subject = db.Column(db.String(100), nullable=True)
+    img_url = db.Column(db.String(200), nullable=True)
+
+    def to_json(self):def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "bio": self.bio,
+            "subject": self.subject,
+            "imgUrl": self.img_url,
+        }  
 
 class Video(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 import Footer from '../Footer/Footer';
 
 const TeacherProfile = () => {
   return (
     <>
-      <HeaderAndSideBar />
 
       <section className="teacher-profile">
         <h1 className="heading">profile details</h1>

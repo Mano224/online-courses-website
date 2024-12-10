@@ -1,11 +1,9 @@
 import Footer from '../Footer/Footer';
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <div>
-      <HeaderAndSideBar />
       <section className="home-grid">
       <h1 className="heading">quick options</h1>
       <div className="box-container">
@@ -117,7 +115,7 @@ const Home = () => {
               <span>10 videos</span>
             </div>
             <h3 className="title">complete HTML tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
+            <Link to="/playlist/1" className="inline-btn">view playlist</Link>
           </div>
 
           <div className="box">
@@ -133,7 +131,7 @@ const Home = () => {
               <span>10 videos</span>
             </div>
             <h3 className="title">complete CSS tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
+            <Link to="/playlist/2" className="inline-btn">view playlist</Link>
           </div>
 
           <div className="box">
@@ -149,7 +147,7 @@ const Home = () => {
               <span>10 videos</span>
             </div>
             <h3 className="title">complete JS tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
+            <Link to="/playlist/3" className="inline-btn">view playlist</Link>
           </div>
 
           <div className="box">
@@ -165,7 +163,7 @@ const Home = () => {
               <span>10 videos</span>
             </div>
             <h3 className="title">complete Bootstrap tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
+            <Link to="/playlist/4" className="inline-btn">view playlist</Link>
           </div>
 
           <div className="box">
@@ -181,7 +179,7 @@ const Home = () => {
               <span>10 videos</span>
             </div>
             <h3 className="title">complete JQuery tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
+            <Link to="/playlist/5" className="inline-btn">view playlist</Link>
           </div>
 
           <div className="box">
@@ -197,7 +195,7 @@ const Home = () => {
               <span>10 videos</span>
             </div>
             <h3 className="title">complete SASS tutorial</h3>
-            <Link to="/playlist" className="inline-btn">view playlist</Link>
+            <Link to="/playlist/6" className="inline-btn">view playlist</Link>
           </div>
         </div>
 

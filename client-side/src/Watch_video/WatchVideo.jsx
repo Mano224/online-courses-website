@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import HeaderAndSideBar from '../HeaderAndSideBar/HeaderAndSideBar';
 import Footer from '../Footer/Footer';
 
 const WatchVideo = () => {
@@ -43,7 +42,6 @@ const WatchVideo = () => {
 
   return (
     <>
-      <HeaderAndSideBar />
 
       <section className="watch-video">
         <div className="video-container">

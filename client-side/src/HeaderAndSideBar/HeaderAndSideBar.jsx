@@ -1,19 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const HeaderAndSideBar = () => {
+const HeaderAndSideBar = ({ onSearch }) => {
   const [sideBarActive, setSideBarActive] = useState(false);
   const [darkMode, setDarkMode] = useState(localStorage.getItem('dark-mode') === 'enabled');
   const [profileActive, setProfileActive] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
-  // Toggle Sidebar visibility
   const toggleSideBar = () => {
     setSideBarActive(!sideBarActive);
     document.body.classList.toggle('active', !sideBarActive);
   };
 
-  // Dark Mode toggle
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark');
@@ -27,14 +27,27 @@ const HeaderAndSideBar = () => {
     setDarkMode(!darkMode);
   };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchQuery);
+    navigate('/search');
+  };
+
   return (
     <>
-      {/* Header Section */}
       <header className="header">
         <section className="flex">
           <Link to="/" className="logo">Educa.</Link>
-          <form action="/search" method="post" className={`search-form ${searchActive ? 'active' : ''}`}>
-            <input type="text" name="search_box" required placeholder="search courses..." maxLength="100" />
+          <form onSubmit={handleSearchSubmit} className={`search-form ${searchActive ? 'active' : ''}`}>
+            <input
+              type="text"
+              name="search_box"
+              required
+              placeholder="search courses..."
+              maxLength="100"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
             <button type="submit" className="fas fa-search"></button>
           </form>
           <div className="icons">
@@ -56,7 +69,6 @@ const HeaderAndSideBar = () => {
         </section>
       </header>
 
-      {/* SideBar Section */}
       <div className={`side-bar ${sideBarActive ? 'active' : ''}`}>
         <div id="close-btn" onClick={toggleSideBar}>
           <i className="fas fa-times"></i>

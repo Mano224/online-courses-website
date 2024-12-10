@@ -129,13 +129,79 @@ def videos(playlist_id):
         "video_url": v.video_url
     } for v in videos])
 
+# Get all teachers
+@app.route('/teachers', methods=["GET"])
+def get_teachers():
+    teachers = Teacher.query.all()
+    return jsonify([teacher.to_json() for teacher in teachers]), 200
 
+# Get a specific teacher
+@app.route('/teachers/<int:id>', methods=["GET"])
+def get_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({'error': 'Teacher not found'}), 404
+    return jsonify(teacher.to_json()), 200
 
+# Add a new teacher
+@app.route('/teachers', methods=["POST"])
+def add_teacher():
+    data = request.form
+    name = data.get('name')
+    email = data.get('email')
+    subject = data.get('subject')
+    profile_picture = request.files.get('profile_picture')
 
+    if not name or not email or not subject:
+        return jsonify({'error': 'All fields are required'}), 400
 
+    if Teacher.query.filter_by(email=email).first():
+        return jsonify({'error': 'Teacher with this email already exists'}), 409
 
+    profile_picture_path = None
+    if profile_picture:
+        filename = secure_filename(profile_picture.filename)
+        profile_picture_path = os.path.join(app.config['UPLOAD_FOLDER'], f"teacher_{filename}")
+        profile_picture.save(profile_picture_path)
 
+    teacher = Teacher(name=name, email=email, subject=subject, profile_picture=profile_picture_path)
+    db.session.add(teacher)
+    db.session.commit()
 
+    return jsonify({'message': 'Teacher added successfully', 'teacher': teacher.to_json()}), 201
+
+# Update teacher information
+@app.route('/teachers/<int:id>', methods=["PATCH"])
+def update_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({'error': 'Teacher not found'}), 404
+
+    data = request.form
+    teacher.name = data.get('name', teacher.name)
+    teacher.email = data.get('email', teacher.email)
+    teacher.subject = data.get('subject', teacher.subject)
+
+    if 'profile_picture' in request.files:
+        profile_picture = request.files['profile_picture']
+        filename = secure_filename(profile_picture.filename)
+        profile_picture_path = os.path.join(app.config['UPLOAD_FOLDER'], f"teacher_{teacher.id}_{filename}")
+        profile_picture.save(profile_picture_path)
+        teacher.profile_picture = profile_picture_path
+
+    db.session.commit()
+    return jsonify({'message': 'Teacher updated successfully', 'teacher': teacher.to_json()}), 200
+
+# Delete a teacher
+@app.route('/teachers/<int:id>', methods=["DELETE"])
+def delete_teacher(id):
+    teacher = Teacher.query.get(id)
+    if not teacher:
+        return jsonify({'error': 'Teacher not found'}), 404
+
+    db.session.delete(teacher)
+    db.session.commit()
+    return jsonify({'message': 'Teacher deleted successfully'}), 200
 
 
 if __name__ == '__main__':
